@@ -5,7 +5,7 @@
         <title>Review List Plugin</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
         <div class="container">
@@ -21,11 +21,11 @@
                 <tbody>
                     <tr>
                         <td>
-                            <div id="Image"> <img src=""> </div>
-                            <div><a href="">Review</a></div>
+                            <div id="Image"> <img src="">IMAGE</div>
+                            <div><a href="">REVIEW</a></div>
                         </td>
                         <td>
-                            <div id="Rating">RATINGIMAGE1</div>
+                            <div id="Rating">RATINGIMAGE</div>
                             <div>BONUS</div>
                         </td>
                         <td>
