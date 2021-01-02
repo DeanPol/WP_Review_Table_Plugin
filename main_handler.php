@@ -40,4 +40,12 @@
     {
         include_once('page_layout.php');
     }
+
+    // Include our css.
+    add_action('admin_enqueue_scripts', 'reg_stylesheets');
+
+    function reg_stylesheets()
+    {
+        wp_enqueue_style('MyCSS', plugins_url('css/style.css', __FILE__));
+    }
 ?>
