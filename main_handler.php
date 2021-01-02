@@ -23,8 +23,6 @@
 
     function CreatePage()
     {
-
-
         add_menu_page(
             'Review Table', // Text displayed in the title tags of the page.
             'Review Table', // Plugin Title text that appears on the submenu.
