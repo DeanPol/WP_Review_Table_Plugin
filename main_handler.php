@@ -5,7 +5,7 @@
     // If the plugin has multiple PHP files, only one of these should have the header comment.
 
     /** 
-     * Plugin Name: Review List Plugin
+     * Plugin Name: Review Table Plugin
      * Plugin URI: https://github.com/DeanPol?tab=repositories
      * Description: Presents the review data fetched from our JSON response in a tabular fashion.
      * Author: Dean Politis
