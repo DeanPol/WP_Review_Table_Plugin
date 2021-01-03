@@ -24,29 +24,52 @@
                 </thead>
                 <tbody>
                 <?php 
-                foreach($json_a['toplists']['575'] as $row_entry) //Our primary functionality. Paint on DOM as many rows as there are JSON properties (reviews).
-                {
-                echo "<tr>
-                        <td>
-                            <div class=\"LogoImage\"> <img src=" . $row_entry['logo'] . "> </div>
-                            <div id=\"ReviewButton\"><a href=". get_site_url() . "/" . $row_entry['brand_id'] . " class=\"ReviewButton\">Review</a></div>
-                        </td>
-                        <td id=\"Rating\">
-                            <div><img src=" . plugins_url('images/rating_5.png', __FILE__) . "></div>"; //Load our custom 5-star rating by default for now. Will need to change to have it be based on the value of our key 'rating'.
-                      echo "<div class=\"Bonus\">" . $row_entry['info']['bonus'] . "</div>
-                        </td>
-                        <td>
-                            <div class=\"FeaturesList\">
-                                <ul>";
-                                foreach($row_entry['info']['features'] as $features) {echo "<li> <img src=" . plugins_url('images/check.png', __FILE__) . ">" . $features . "</li>";} // Load our custom checklist icon.
-                            echo "</ul>
-                            </div>
-                        </td>
-                        <td>
-                            <div><a href=" . $row_entry['play_url'] . " class=\"PlayButton\">Play Now</a></div>
-                            <div class=\"TermsNConditions\">" . $row_entry['terms_and_conditions'] . "</div> 
-                        </td>
-                    </tr>"; }?>
+                 $sorted_object = $json_a['toplists']['575'];
+                 usort($sorted_object, function($a, $b) {
+                     return $a['position'] <=> $b['position'];
+                 });
+                  foreach($sorted_object as $row_entry)
+                  {
+                      echo    "<tr>
+                                  <td>
+                                      <div class=\"LogoImage\"> <img src=" . $row_entry['logo'] . "> </div>
+                                      <div id=\"ReviewButton\"><a href=". get_site_url() . "/" . $row_entry['brand_id'] . " class=\"ReviewButton\">Review</a></div>
+                                  </td>
+                                  <td id=\"Rating\">";
+                                  switch($row_entry['info']['rating'])
+                                  {
+                                      case 1:
+                                          echo "<div><img src=" . plugins_url('images/rating_1.png', __FILE__) . "></div>"; 
+                                          break;
+                                      case 2:
+                                          echo "<div><img src=" . plugins_url('images/rating_2.png', __FILE__) . "></div>";
+                                          break;
+                                      case 3:
+                                          echo "<div><img src=" . plugins_url('images/rating_3.png', __FILE__) . "></div>";
+                                          break;
+                                      case 4:
+                                          echo "<div><img src=" . plugins_url('images/rating_4.png', __FILE__) . "></div>";
+                                          break;
+                                      case 5:
+                                          echo "<div><img src=" . plugins_url('images/rating_5.png', __FILE__) . "></div>";
+                                          break;
+                                      default:
+                                          break;
+                                  }
+                            echo "<div class=\"Bonus\">" . $row_entry['info']['bonus'] . "</div>
+                                  </td>
+                                  <td>
+                                      <div class=\"FeaturesList\">
+                                          <ul>";
+                                          foreach($row_entry['info']['features'] as $features) {echo "<li> <img src=" . plugins_url('images/check.png', __FILE__) . ">" . $features . "</li>";}
+                                    echo "</ul>
+                                      </div>
+                                  </td>
+                                  <td>
+                                      <div><a href=" . $row_entry['play_url'] . " class=\"PlayButton\">Play Now</a></div>
+                                      <div class=\"TermsNConditions\">" . $row_entry['terms_and_conditions'] . "</div> 
+                                  </td>
+                              </tr>"; }?>
                 </tbody>
             </table>
         </div>
