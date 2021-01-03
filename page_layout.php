@@ -2,7 +2,6 @@
     $strJsonFileContents = file_get_contents("WD_Doc_1.json", __FILE__); //For now, needs to be locally present.
     $json_a = json_decode($strJsonFileContents, true); 
 ?>
-
 <html>
     <head>
         <meta charset="utf-8">

@@ -19,6 +19,7 @@
     // At a minimum, the add_action() function requires two parameters:
     // 1. the name of the action you're hooking to and
     // 2. the name of your callback function.
+    
     add_action('admin_menu', 'CreatePage'); //When 'admin_menu' is called, run 'createPage'.
 
     function CreatePage()
@@ -32,7 +33,7 @@
         );
     }
 
-    
+
     // Define our callback function.
     // Using this to define which script is called.
     function MyCallbackFunction()

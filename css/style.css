@@ -41,8 +41,6 @@ body
     text-align:center;
 }
 
-
-
 .styled-table tbody tr:last-of-type {
     border-bottom: 3px solid #ca9a30ec;
 }
