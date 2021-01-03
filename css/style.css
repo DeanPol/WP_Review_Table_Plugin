@@ -8,7 +8,7 @@ body
     padding:0;
     margin:0;
 
-    background-color:#f4f4f4;
+    background-color:#4b0404;
 }
 
 .container
@@ -39,4 +39,77 @@ body
 .styled-table tbody tr {
     border-bottom: 2px solid #dddddd;
     text-align:center;
+}
+
+
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 3px solid #ca9a30ec;
+}
+
+#ReviewButton
+{
+    margin-top: 20px;
+}
+
+#Rating img
+{
+    width:100%;
+    max-width: 80px;
+    display:inline-block;
+}
+
+.Bonus
+{
+    display:inline-block;
+    margin-top: 16px;
+    max-width:170px;
+    text-overflow:ellipsis;
+    color:#7a1a1a;
+    
+}
+
+.FeaturesList
+{
+    text-align:left;
+    margin-left:80px;
+    font-size: 12px;
+    font-weight:550;
+    color:#7a1a1a;
+}
+
+.FeaturesList img
+{
+    margin-right:10px;
+    border-radius: 50%;
+    width:5%;
+    min-height:10px;
+    min-width:10px;
+}
+
+.PlayButton
+{
+    display:inline-block;
+    padding:12px 26px;
+    margin: 0;
+    border-radius:8px;
+    box-sizing:border-box;
+    text-transform:uppercase;
+    font-family:'Roboto', sans-serif;
+    font-weight:bold;
+    color:#ffffff;
+    background-color:#4bad74;
+    text-align:center;
+    transition: all 0.2s;
+}
+
+.TermsNConditions
+{
+    font-size: 0.8em;
+    margin: 16px 0 0 0;
+}
+
+.TermsNConditions a
+{
+    color:#cf2929;
 }

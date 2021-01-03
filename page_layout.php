@@ -1,6 +1,6 @@
 <?php
-    $strJsonFileContents = file_get_contents("WD_Doc_1.json", __FILE__);
-    $json_a = json_decode($strJsonFileContents, true);
+    $strJsonFileContents = file_get_contents("WD_Doc_1.json", __FILE__); //For now, needs to be locally present.
+    $json_a = json_decode($strJsonFileContents, true); 
 ?>
 
 <html>
@@ -24,28 +24,30 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td> <!-- We need to be sure to assign the correct id and class tags for proper and concice css styling options -->
-                            <div id="Image"> <img src="<?php echo $json_a['toplists']['575'][0]['logo']?>"> </div>
-                            <div><a href=<?php echo get_site_url() . "/". $json_a['toplists']['575'][0]['brand_id']?>>Review</a></div>
+                <?php 
+                foreach($json_a['toplists']['575'] as $row_entry) //Our primary functionality. Paint on DOM as many rows as there are JSON properties (reviews).
+                {
+                echo "<tr>
+                        <td>
+                            <div class=\"LogoImage\"> <img src=" . $row_entry['logo'] . "> </div>
+                            <div id=\"ReviewButton\"><a href=". get_site_url() . "/" . $row_entry['brand_id'] . " class=\"ReviewButton\">Review</a></div>
+                        </td>
+                        <td id=\"Rating\">
+                            <div><img src=" . plugins_url('images/rating_5.png', __FILE__) . "></div>"; //Load our custom 5-star rating by default for now. Will need to change to have it be based on the value of our key 'rating'.
+                      echo "<div class=\"Bonus\">" . $row_entry['info']['bonus'] . "</div>
                         </td>
                         <td>
-                            <div id="Rating">RATINGIMAGE1</div> <!-- The img here will be selected from a pool of custom images, with factor being our 'rating' property -->
-                            <div><?php echo $json_a['toplists']['575'][0]['info']['bonus']?></div>
-                        </td>
-                        <td>
-                            <div id="FeaturesList">
-                                <ul>
-                                    <?php foreach($json_a['toplists']['575'][0]['info']['features'] as $feature){ //for every feature listed in our json object, display it!
-                                        echo "<li>" . $feature . "</li>"; } ?>
-                                </ul>
+                            <div class=\"FeaturesList\">
+                                <ul>";
+                                foreach($row_entry['info']['features'] as $features) {echo "<li> <img src=" . plugins_url('images/check.png', __FILE__) . ">" . $features . "</li>";} // Load our custom checklist icon.
+                            echo "</ul>
                             </div>
                         </td>
                         <td>
-                            <?php echo "<div><a href=" . $json_a['toplists']['575'][0]['play_url'] . " class=\"PlayButton\">Play Now</a></div>"?> <!-- Hardcoding in the first entry sure is easy. Need to find an effective way for the rest-->
-                            <div id="TermsNConditions"> <?php echo $json_a['toplists']['575'][0]['terms_and_conditions'] ?></div>
+                            <div><a href=" . $row_entry['play_url'] . " class=\"PlayButton\">Play Now</a></div>
+                            <div class=\"TermsNConditions\">" . $row_entry['terms_and_conditions'] . "</div> 
                         </td>
-                    </tr>
+                    </tr>"; }?>
                 </tbody>
             </table>
         </div>
