@@ -1,7 +1,31 @@
 <?php
-    $strJsonFileContents = file_get_contents("WD_Doc_1.json", __FILE__);
-    $json_a = json_decode($strJsonFileContents, true);
+
+    // Wordpress allows us to read data from any table in the WordPress database
+    // by using the global object $wpdb, an instantiation of the wpdb class.
+    global $wpdb; //recommended way of accessing $wpdb in our PHP code.
+
+    $table_name = $wpdb->prefix.'json_test';
+
+    //All data in SQL queries must be SQL-escaped before the SQL query is executed to prevent against
+    // SQL injection attacks. The prepare method performs this functionality for WordPress.
+    // However, the only SQL query we have here is not injectable since it doesn't take any input.
+    $results = $wpdb->get_results("SELECT * FROM $table_name"); //Fetch from our table in our database.
+
+    // json_decode() decodes a JSON string and returns an object, which is easier said than done.
+    // Here we must specify that we want to specifically decode the member 'json_object' which actually
+    // holds all the information we actually need, since our query above returns a raw string of ugly
+    // and incomprehensive data.
+    $data = json_decode($results[0]->json_object, true); //When set true, json object is decoded into associative arrays.
+    
+    // We are currently interested in this list specifically.
+    $sorted_object = $data['toplists']['575'];
+
+    // Sort our list based on the key 'position'.
+    usort($sorted_object, function($a, $b) {
+    return $a['position'] <=> $b['position'];
+    });
 ?>
+
 
 <html>
     <head>
@@ -10,9 +34,9 @@
         <title>Review Table Plugin</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="<?php echo plugins_url() . '/ReviewList/css/style.css'?>">
+        <link rel="stylesheet" href="<?php echo plugins_url() . '/testplugin/css/style.css'?>">
     </head>
-    <body class="body_plugin">
+    <body>
         <div class="container">
             <table class="styled-table">
                 <thead>
@@ -25,10 +49,6 @@
                 </thead>
                 <tbody>
                 <?php 
-                   $sorted_object = $json_a['toplists']['575'];
-                   usort($sorted_object, function($a, $b) {
-                       return $a['position'] <=> $b['position'];
-                   });
                     foreach($sorted_object as $row_entry)
                     {
                         echo    "<tr>
@@ -70,7 +90,9 @@
                                         <div><a href=" . $row_entry['play_url'] . " class=\"PlayButton\">Play Now</a></div>
                                         <div class=\"TermsNConditions\">" . $row_entry['terms_and_conditions'] . "</div> 
                                     </td>
-                                </tr>"; }?>
+                                </tr>"; } 
+                                
+                            ?>
                 </tbody>
             </table>
         </div>
