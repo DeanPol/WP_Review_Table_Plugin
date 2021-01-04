@@ -1,20 +1,23 @@
-body
+.body_plugin
 {
     font-family: 'Lato', sans-serif;
-    font-size: 0.9em;
-    line-height:1.5;
+    font-size: 0.4em;
+    line-height:1em;
 
     overflow:auto;
     padding:0;
     margin:0;
+}
 
-    background-color:#4b0404;
+ul
+{
+    list-style-type: none;
 }
 
 .container
 {
     width: 100%;
-    margin:auto;
+    min-width:30%;
 }
 
 .styled-table {
@@ -33,7 +36,7 @@ body
 
 .styled-table th,
 .styled-table td {
-    padding: 20px 20px;
+    padding: 10px 10px;
 }
 
 .styled-table tbody tr {
@@ -50,28 +53,32 @@ body
     margin-top: 20px;
 }
 
+#Rating
+{
+    padding: 0;
+    margin: 0;
+}
+
 #Rating img
 {
-    width:100%;
-    max-width: 80px;
-    display:inline-block;
+    width: 30%;
 }
 
 .Bonus
 {
+    margin:10px;
+    padding:0;
     display:inline-block;
-    margin-top: 16px;
-    max-width:170px;
     text-overflow:ellipsis;
+    font-size: 18px;
     color:#7a1a1a;
     
 }
 
 .FeaturesList
 {
-    text-align:left;
-    margin-left:80px;
-    font-size: 12px;
+    text-align:justify;
+    font-size: 16px;
     font-weight:550;
     color:#7a1a1a;
 }
@@ -110,4 +117,49 @@ body
 .TermsNConditions a
 {
     color:#cf2929;
+}
+
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+	td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+	}
+	
+	td:before { 
+		/* Now like a table header */
+		position: relative;
+		/* Top/left values mimic padding */
+		margin-bottom: 16px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+	
+	/*
+	Label the data
+	*/
+	td:nth-of-type(1):before { content: "Casino"; }
+	td:nth-of-type(2):before { content: "Bonus"; }
+	td:nth-of-type(3):before { content: "Features"; }
+	td:nth-of-type(4):before { content: "Play"; }
 }
