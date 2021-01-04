@@ -20,32 +20,11 @@
     // 1. the name of the action you're hooking to and
     // 2. the name of your callback function.
     
-    add_action('admin_menu', 'CreatePage'); //When 'admin_menu' is called, run 'createPage'.
 
-    function CreatePage()
-    {
-        add_menu_page(
-            'Review Table', // Text displayed in the title tags of the page.
-            'Review Table', // Plugin Title text that appears on the submenu.
-            'manage_options', //Capability required for this menu to be displayed to the user.
-            'Review_Table', //visible title on URL
-            'MyCallbackFunction' //our callback function.
-        );
-    }
-
-
-    // Define our callback function.
-    // Using this to define which script is called.
-    function MyCallbackFunction()
-    {
-        include_once('page_layout.php');
-    }
-
-    // Include our css.
-    add_action('admin_enqueue_scripts', 'reg_stylesheets');
-
-    function reg_stylesheets()
-    {
-        wp_enqueue_style('MyCSS', plugins_url('css/style.css', __FILE__));
-    }
-?>
+        // Exit if accessed directly
+        if(!defined('ABSPATH')) {
+            exit;
+        }
+    
+        // Load up our functions
+        require_once(plugin_dir_path(__FILE__) . 'review_table_functions.php');
