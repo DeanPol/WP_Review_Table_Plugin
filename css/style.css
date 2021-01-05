@@ -1,49 +1,56 @@
-body
-{
-    font-family: 'Lato', sans-serif;
+/* ---- Global elements ---- */
+body{
+    font-family: "Open", sans-serif;
     font-size: 0.8em;
     line-height:1em;
 }
 
-ul
-{
-    list-style-type: none;
+ul{
+    text-align: justify;
+    margin: 0 auto;
+    list-style: none;
 }
 
-.container
-{
-
-    overflow:auto;
-    padding:0;
-    margin:0;
-
+img{
     width: 100%;
-    min-width:30%;
+    max-width:140px;
 }
 
-/*  --------- Table Style ----------- */
+/* ---- Container ---- */
 
-.styled-table {
-    background-color:#f4f4f4;
+.container{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/*  ---- Table ---- */
+
+.styled-table { 
     border-collapse:collapse;
-    align-items: center;
-    box-shadow: 0 0 20px rgba(87, 82, 82, 0.15);
+    table-layout:auto;
+
+    background-color:#f4f4f4;
 }
 
 .styled-table thead tr {
+    text-align: center;
+    white-space:nowrap;
+    
+
     background-color: #ca9a30ec;
     color: #414141;
-    text-align: center;
 }
 
 .styled-table th,
 .styled-table td {
-    padding: 10px 10px;
+    border:#e2e2e2 solid 1px;
+    padding: 12x 12px;
 }
 
 .styled-table tbody tr {
-    border-bottom: 2px solid #dddddd;
     text-align:center;
+    border-bottom: 2px solid #dddddd;
 }
 
 .styled-table tbody tr:last-of-type {
@@ -52,93 +59,90 @@ ul
 
 /* --------- Styiling our custom elemnents -------- */
 
-.LogoImage
-{
+.LogoImage{
     min-width:150px;
 }
 
-#ReviewButton
-{
+#ReviewButton{
     font-size:16px;
     text-decoration: underline rgb(0, 145, 255);
 }
 
-#Rating
-{
-    padding: 0;
-    margin: 0;
-    min-width:30%
-}
+.Bonus{
+    font-size: 0.8em;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-all;
+    word-break: break-word;
+    hyphens: auto;
+    min-width: 170px;
 
-.Bonus
-{
-    margin:10px;
-    padding:0;
-    display:inline-block;
-    text-overflow:ellipsis;
-    font-size: 18px;
+    margin-top: 18px;
+
     color:#7a1a1a;
-    word-break:keep-all;
 }
 
-.FeaturesList
-{
-    text-align:justify;
-    font-size: 16px;
+.FeaturesList{
+    font-size: 0.9em;
     font-weight:550;
-    color:#7a1a1a;
     white-space: nowrap;
+
+    margin-left:18px;
+
+    color:#7a1a1a;
 }
 
-.FeaturesList img
-{
-    margin-right:10px;
+
+.FeaturesList ul li img{
+
     border-radius: 50%;
     width:5%;
     min-height:10px;
     min-width:10px;
+    
+    margin-right:18px;
 }
 
-.PlayButton
-{
+.PlayButton{
     display:inline-block;
-    padding:12px 26px;
-    margin: 0;
     border-radius:8px;
     box-sizing:border-box;
-    text-transform:uppercase;
-    white-space:nowrap;
+    transition: all 0.2s;
+    
     font-family:'Roboto', sans-serif;
     font-weight:bold;
+    text-align:center;
+    text-transform:uppercase;
+    white-space:nowrap;
+
+    padding:12px 26px;
+    margin: 0;
+
     color:#ffffff;
     background-color:#4bad74;
-    text-align:center;
-    transition: all 0.2s;
 }
 
-.TermsNConditions
-{
-    font-size: 0.8em;
+.TermsNConditions{
+    font-size: 0.7em;
+    white-space:nowrap;
+
     margin: 10px 0 0 0;
-    
 }
 
-.TermsNConditions a
-{
+.TermsNConditions a{
     color:#cf2929;
 }
 
 @media 
-only screen and (max-width: 760px),
-(min-device-width: 768px) and (max-device-width: 1024px)  {
-
+only screen and (max-width: 760px), 
+(min-device-width: 768px) and (max-device-width: 1024px){
 	/* Force table to not be like tables anymore */
-	table, thead, tbody, th, td, tr { 
+    table, thead, tbody, th, td, tr { 
         display: block;
 	}
 	
 	/* Hide table headers (but not display: none;, for accessibility) */
-	thead tr { 
+    thead tr { 
 		position: absolute;
 		top: -9999px;
 		left: -9999px;
@@ -146,33 +150,34 @@ only screen and (max-width: 760px),
 	
 	tr { border: 10px solid #ccc; }
 	
-	td { 
-		/* Behave  like a "row" */
-		border: none;
+    td{ 
+        /* Behave  like a "row" */
 		border-bottom: 1px solid #eee; 
 		position: relative;
         padding-left: 50%;
     }
 
-    .FeaturesList 
-    {
-        text-align:center;
-        word-break:keep-all;
+    .Bonus{
+        margin: 0;
     }
 
-    .TermsNConditions
-    {
+    .FeaturesList ul li{
+        word-break: keep-all;
+        text-align: justify;
+
+    }
+
+    .TermsNConditions{
         font-size: 0.6em;
-        margin: 16px 0 0 0;
+        margin: 10px 0 0 0;
         white-space: nowrap;
     }
 	
-	td:before { 
+    td:before { 
 		/* Now like a table header */
         position: relative;
 		/* Top/left values mimic padding */
         width: 45%;
-
 	}
 	
     /* Label the data */

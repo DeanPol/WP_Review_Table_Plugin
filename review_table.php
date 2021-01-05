@@ -9,7 +9,7 @@
     /** 
      * Plugin Name: My Table Display Plugin
      * Description: Project - Display Table.
-     * Author: Dionysius/Dean Politis
+     * Author: D.Politis
     */
     
     // Exit if accessed directly

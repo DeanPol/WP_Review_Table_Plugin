@@ -36,7 +36,7 @@
         <title>My Display Table Page</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="<?php echo plugins_url() . '/review_table/css/style.css'?>">
+        <link rel="stylesheet" href=<?php echo plugins_url('css/style.css', __FILE__)?>>
     </head>
     <body>
         <div class="container">
