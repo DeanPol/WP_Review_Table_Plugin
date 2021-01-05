@@ -8,7 +8,7 @@
 
     /** 
      * Plugin Name: My Table Display Plugin
-     * Description: Handle the basics
+     * Description: Project - Display Table.
      * Author: Dionysius/Dean Politis
     */
     
