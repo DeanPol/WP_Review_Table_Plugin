@@ -1,16 +1,20 @@
 <?php
 
-    class Review_Widget extends WP_Widget {
+    // This class is used to register our plugin as a widget, allowing us to have more freedom when 
+    // it comes to placing it on a page. For this current project, it is simply going to be in the Footer
+    // area of the active defaul theme.
+
+    class ReviewTable_Widget extends WP_Widget {
 
     /**
      * Sets up the widgets name etc
      */
     public function __construct() {
         $widget_ops = array( 
-            'classname' => 'review_widget',
-            'description' => 'My Widget is awesome',
+            'classname' => 'review_table_widget',
+            'description' => 'The plugin which displays the table of reviews.',
         );
-        parent::__construct( 'review_widget', 'Review_Widget', $widget_ops );
+        parent::__construct( 'review_table_widget', 'ReviewTable_Widget', $widget_ops );
     }
 
     /**
@@ -21,7 +25,7 @@
      */
     public function widget( $args, $instance ) {
         // outputs the content of the widget
-        require_once(plugin_dir_path(__FILE__) . 'review_table_layout.php');
+        require_once(plugin_dir_path(__FILE__) . 'review_table_layout.php'); // main function of our widget class - display other php file!
     }
 
     /**

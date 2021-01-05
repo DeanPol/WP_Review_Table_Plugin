@@ -1,10 +1,12 @@
 <?php
 
+    //======================= Load data from JSON file ==========================//
+
     // Wordpress allows us to read data from any table in the WordPress database
     // by using the global object $wpdb, an instantiation of the wpdb class.
     global $wpdb; //recommended way of accessing $wpdb in our PHP code.
 
-    $table_name = $wpdb->prefix.'json_test';
+    $table_name = $wpdb->prefix.'json_data';
 
     //All data in SQL queries must be SQL-escaped before the SQL query is executed to prevent against
     // SQL injection attacks. The prepare method performs this functionality for WordPress.
@@ -26,15 +28,15 @@
     });
 ?>
 
-
+<!-- ====================== Output page contents ======================= -->
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Review Table Plugin</title>
+        <title>My Display Table Page</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="<?php echo plugins_url() . '/testplugin/css/style.css'?>">
+        <link rel="stylesheet" href="<?php echo plugins_url() . '/review_table/css/style.css'?>">
     </head>
     <body>
         <div class="container">
@@ -58,7 +60,7 @@
                                     </td>
                                     <td id=\"Rating\">";
                                     switch($row_entry['info']['rating'])
-                                    {
+                                    { // Based on the 'rating' key of our current entry, choose the correct custom image.
                                         case 1:
                                             echo "<div><img src=" . plugins_url('images/rating_1.png', __FILE__) . "></div>"; 
                                             break;
